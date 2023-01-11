@@ -6,6 +6,8 @@ jobs:
     steps:
       - run: mkdir temp
       - run: echo "something great version at << pipeline.id >>" >> temp/output.txt
+      - run: ls
+      - run: ls temp
       - persist_to_workspace:
           root: temp
           paths:
