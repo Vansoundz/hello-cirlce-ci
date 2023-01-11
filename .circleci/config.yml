@@ -1,14 +1,16 @@
 version: 2.1
 jobs:
+  will-fail:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: return 1
   print-hello:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - run: mkdir temp
       - run: echo "something great version at << pipeline.id >>" >> temp/output.txt
-      - run: ls
-      - run: ls temp
-      - run: pwd
       - persist_to_workspace:
           root: temp
           paths:
@@ -21,7 +23,11 @@ jobs:
       - attach_workspace:
           at: temp
       - run:  cat temp/output.txt
-
+  catch-it:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo "😂😂 - told you"
 workflows:
   default:
     jobs:
