@@ -28,6 +28,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo "😂😂 - told you"
+    when: on_fail
 workflows:
   default:
     jobs:
@@ -36,4 +37,3 @@ workflows:
       - print-world:
           requires:
             - print-hello
-      - catch-it
