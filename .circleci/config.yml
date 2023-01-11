@@ -12,7 +12,7 @@ jobs:
       - persist_to_workspace:
           root: temp
           paths:
-            - temp/output.txt
+            - output.txt
 
   print-world:
     docker:
