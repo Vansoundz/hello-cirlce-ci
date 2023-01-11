@@ -6,7 +6,7 @@ jobs:
     steps:
       - run: echo "something great version at << pipeline.id >>" >> output.txt
       - persist_to_workspace:
-          root: /tmp/dir
+          root: .
           paths:
             - output.txt
 
@@ -15,7 +15,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: /tmp/dir
+          at: .
       - run:  cat output.txt
 
 workflows:
