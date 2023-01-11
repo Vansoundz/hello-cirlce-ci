@@ -31,6 +31,7 @@ jobs:
 workflows:
   default:
     jobs:
+      - will-fail
       - print-hello
       - print-world:
           requires:
