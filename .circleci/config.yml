@@ -5,6 +5,10 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: return 1
+      - run: 
+          name: ever
+          command: echo "😂😂😂😂 finally"
+          when: on_fail
   print-hello:
     docker:
       - image: circleci/node:13.8.0
@@ -23,12 +27,6 @@ jobs:
       - attach_workspace:
           at: temp
       - run:  cat temp/output.txt
-  catch-it:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo "😂😂 - told you"
-    when: on_fail
 workflows:
   default:
     jobs:
