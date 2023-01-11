@@ -4,19 +4,20 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "something great version at << pipeline.id >>" >> output.txt
+      - run: mkdir temp
+      - run: echo "something great version at << pipeline.id >>" >> temp/output.txt
       - persist_to_workspace:
-          root: .
+          root: temp
           paths:
-            - output.txt
+            - temp/output.txt
 
   print-world:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: .
-      - run:  cat output.txt
+          at: temp
+      - run:  cat temp/output.txt
 
 workflows:
   default:
